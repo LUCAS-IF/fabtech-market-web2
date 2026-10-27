@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FabTech Market: produtos e kits para impressão 3D, Arduino, eletrônica, robótica e fabricação digital.">
+  <meta name="theme-color" content="#5b4be7">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>FabTech Market | Ideias que viram projetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Os modelos e os dados são carregados antes da lógica que monta a loja. -->
+  <script src="js/models/Produto.js" defer></script>
+  <script src="js/models/ItemCarrinho.js" defer></script>
+  <script src="js/models/Carrinho.js" defer></script>
+  <script src="js/dadosProdutos.js" defer></script>
+  <script src="js/configuracao.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <!-- Aviso de frete e acesso rápido às principais áreas da loja. -->
+  <div class="announcement-bar">
+    <p><span class="announcement-dot" aria-hidden="true"></span> Frete grátis para compras a partir de R$ 250,00</p>
+    <a href="#como-funciona">Conheça a FabTech Market <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-main container">
+      <a class="brand" href="#inicio" aria-label="FabTech Market - página inicial">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" role="img"><path d="M8 9.5 20 3l12 6.5v14L20 30 8 23.5z"/><path d="M8 9.5 20 16l12-6.5M20 16v14M13.5 6.5 25.5 13v8.5L20 24.5l-5.5-3V13z"/></svg>
+        </span>
+        <span class="brand-wordmark"><span>FABTECH</span><small>MARKET</small></span>
+      </a>
+
+      <!-- Menu principal: usa âncoras para navegar pelas seções sem sair da página. -->
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#newsletter">Novidades</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+
+      <!-- A pesquisa envia o texto ao JavaScript, que filtra o catálogo sem recarregar a página. -->
+      <form class="search-form" id="form-busca" role="search">
+        <label class="visually-hidden" for="campo-busca">Consultar produtos pelo nome ou categoria</label>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="campo-busca" name="q" type="search" placeholder="Consultar produtos..." autocomplete="off">
+        <button class="search-submit" type="submit" aria-label="Consultar">Buscar</button>
+      </form>
+
+      <div class="header-actions">
+        <!-- O botão alterna o tema; o ícone de sol/lua muda de acordo com a preferência ativa. -->
+        <button class="icon-button theme-toggle" id="btn-tema" type="button" aria-label="Ativar tema escuro" aria-pressed="false" title="Alternar tema">
+          <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.6 8.6 0 1 0 20.4 15.4Z"/></svg>
+        </button>
+        <!-- O contador mostra a soma das unidades, e não apenas a quantidade de tipos de produto. -->
+        <button class="botao-abrir-carrinho" id="abrir-carrinho" type="button" aria-controls="painel-carrinho" aria-expanded="false">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="9.5" cy="19.5" r="1.25"/><circle cx="17.5" cy="19.5" r="1.25"/></svg>
+          <span class="rotulo-botao-carrinho">Carrinho</span>
+          <span class="contador-carrinho" id="contador-carrinho" aria-label="0 itens no carrinho">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- Apresentação inicial da loja, com chamada para explorar os produtos. -->
+    <section class="hero container" id="inicio" aria-labelledby="titulo-hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> O universo maker começa aqui</p>
+        <h1 id="titulo-hero">Boas ideias merecem <span>virar realidade.</span></h1>
+        <p class="hero-description">Encontre kits, ferramentas e materiais para transformar curiosidade em projetos de verdade — da primeira ligação no Arduino à peça finalizada em 3D.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalogo">Explorar catálogo <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#como-funciona">Como comprar <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-social-proof" aria-label="Informações da loja">
+          <div class="proof-icon-row" aria-hidden="true"><span>3D</span><span>IoT</span><span>DIY</span></div>
+          <p><strong>Feito para quem cria.</strong><br><span>Aprenda, teste e construa.</span></p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <div class="hero-image-frame">
+          <img src="assets/images/impressao-3d.png" alt="Equipamento de impressão 3D utilizado em projetos de fabricação digital" fetchpriority="high">
+          <div class="floating-note note-top"><span class="note-icon" aria-hidden="true">✳</span><span><strong>Crie sem limites</strong><small>Materiais para suas ideias</small></span></div>
+          <div class="floating-note note-bottom"><span class="status-dot" aria-hidden="true"></span><span><strong>Universo maker</strong><small>Do protótipo ao projeto</small></span></div>
+        </div>
+        <span class="hero-spark spark-one" aria-hidden="true">✳</span>
+        <span class="hero-spark spark-two" aria-hidden="true">✦</span>
+      </div>
+    </section>
+
+    <!-- Resume as vantagens e as regras gerais da loja demonstrativa. -->
+    <section class="benefits-strip container" id="como-funciona" aria-label="Vantagens da loja">
+      <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg></span><span><strong>Frete grátis</strong><small>Acima de R$ 250,00</small></span></div>
+      <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.5-2.8 7.8-7 10-4.2-2.2-7-5.5-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong>Compra demonstrativa</strong><small>Checkout simples e seguro para testes</small></span></div>
+      <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg></span><span><strong>Feito para aprender</strong><small>Produtos para projetos criativos</small></span></div>
+    </section>
+
+    <!-- O catálogo é preenchido pelo JavaScript para permitir busca, filtros e ordenação. -->
+    <section class="secao-catalogo container" id="catalogo" aria-labelledby="titulo-catalogo">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> Escolha seu próximo projeto</p>
+          <h2 id="titulo-catalogo">Explore o catálogo<span class="heading-period">.</span></h2>
+          <p class="section-description">Kits e materiais selecionados para experimentar, aprender e colocar a mão na massa.</p>
+        </div>
+        <p class="contador-resultados" id="contador-resultados" aria-live="polite">Carregando produtos...</p>
+      </div>
+
+      <!-- Busca, filtros e ordenação trabalham juntos para encontrar produtos rapidamente. -->
+      <div class="barra-ferramentas-catalogo">
+        <!-- Os botões de categoria são completados pelo JavaScript a partir do catálogo. -->
+        <div class="filtros-categoria" id="filtros-categoria" role="group" aria-label="Filtrar produtos por categoria">
+          <button type="button" class="filtro-categoria is-active" data-categoria="Todas" aria-pressed="true">Todos</button>
+        </div>
+        <!-- O seletor ordena os resultados por preço, avaliação, nome ou destaque. -->
+        <div class="controle-ordenacao">
+          <label for="ordenar-produtos">Ordenar por</label>
+          <select id="ordenar-produtos" name="ordenacao">
+            <option value="destaque">Destaques</option>
+            <option value="menor-preco">Menor preço</option>
+            <option value="maior-preco">Maior preço</option>
+            <option value="avaliacao">Melhor avaliação</option>
+            <option value="nome">Nome A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Aparece só durante uma busca e oferece um atalho para limpar o texto pesquisado. -->
+      <div class="consulta-ativa" id="resumo-consulta" hidden>
+        <span id="texto-consulta"></span>
+        <button type="button" id="limpar-consulta">Limpar consulta <span aria-hidden="true">×</span></button>
+      </div>
+
+      <!-- Modelo vazio usado pelo JavaScript para criar cada cartão de produto. -->
+      <template id="modelo-card-produto"><article class="cartao-produto"></article></template>
+      <div class="grade-produtos" id="lista-produtos" aria-live="polite" aria-busy="true"></div>
+      <div class="estado-vazio" id="estado-vazio" hidden>
+        <span class="icone-estado-vazio" aria-hidden="true">⌕</span>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente outra palavra, escolha uma categoria diferente ou limpe os filtros.</p>
+        <button class="button button-secondary" type="button" id="limpar-filtros">Limpar filtros</button>
+      </div>
+    </section>
+
+    <!-- Newsletter demonstrativa: valida o e-mail, mas não envia os dados. -->
+    <!-- Newsletter de demonstração: valida o e-mail e mostra feedback, sem cadastrá-lo. -->
+    <section class="secao-novidades" id="newsletter" aria-labelledby="titulo-newsletter">
+      <div class="container conteudo-novidades">
+        <div class="marca-novidades" aria-hidden="true">✳</div>
+        <div class="texto-novidades">
+          <p class="eyebrow eyebrow-light">Receba inspiração</p>
+          <h2 id="titulo-newsletter">Novas ideias na sua caixa de entrada.</h2>
+          <p>Cadastre seu e-mail para receber novidades do universo maker.</p>
+        </div>
+        <form class="formulario-novidades" id="form-newsletter" novalidate>
+          <label class="visually-hidden" for="email-newsletter">Seu e-mail</label>
+          <input id="email-newsletter" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="email" required>
+          <button type="submit" class="button button-light">Quero receber <span aria-hidden="true">→</span></button>
+          <p class="retorno-formulario" id="feedback-newsletter" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé com atalhos para o catálogo, ajuda e contato. -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-block">
+        <a class="brand brand-footer" href="#inicio" aria-label="FabTech Market - voltar ao início">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 9.5 20 3l12 6.5v14L20 30 8 23.5z"/><path d="M8 9.5 20 16l12-6.5M20 16v14M13.5 6.5 25.5 13v8.5L20 24.5l-5.5-3V13z"/></svg></span>
+          <span class="brand-wordmark"><span>FABTECH</span><small>MARKET</small></span>
+        </a>
+        <p>Produtos e ideias para quem gosta de criar, experimentar e fazer acontecer.</p>
+      </div>
+      <div class="footer-column"><h2>Loja</h2><a href="#catalogo">Todos os produtos</a><a href="#catalogo" data-link-categoria="Impressão 3D">Impressão 3D</a><a href="#catalogo" data-link-categoria="Eletrônica">Eletrônica</a></div>
+      <div class="footer-column"><h2>Ajuda</h2><a href="#como-funciona">Como funciona</a><button class="footer-link-button" id="link-carrinho" type="button">Ver carrinho</button><a href="contato.html">Fale conosco</a></div>
+    </div>
+    <div class="container footer-bottom"><p>© <span id="ano-atual"></span> FabTech Market. Projeto acadêmico demonstrativo.</p><p>Feito para transformar ideias em projetos.</p></div>
+  </footer>
+
+  <!-- Painel lateral onde a pessoa revisa itens, quantidades, frete e cupons. -->
+  <button class="sobreposicao-painel-carrinho" id="sobreposicao-carrinho" type="button" aria-label="Fechar carrinho" tabindex="-1" hidden></button>
+  <aside class="painel-carrinho" id="painel-carrinho" role="dialog" aria-modal="true" aria-labelledby="titulo-carrinho" aria-hidden="true" inert>
+    <div class="cabecalho-painel-carrinho">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> Sua seleção</p><h2 id="titulo-carrinho">Meu carrinho <span id="quantidade-no-titulo">(0)</span></h2></div>
+      <button class="icon-button botao-fechar-painel-carrinho" id="fechar-carrinho" type="button" aria-label="Fechar carrinho"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="progresso-frete" id="progresso-frete"><p>Adicione produtos ao carrinho para calcular o frete.</p><div class="trilho-progresso"><span style="width:0%"></span></div></div>
+    <div class="lista-itens-carrinho" id="lista-carrinho" aria-live="polite"></div>
+    <div class="estado-carrinho-vazio" id="carrinho-vazio"><div class="empty-bag" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1 13H5L4 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></div><h3>Seu carrinho está vazio</h3><p>Encontre algo para dar vida ao seu próximo projeto.</p><button class="button button-secondary" id="voltar-compras" type="button">Explorar produtos</button></div>
+    <div class="rodape-painel-carrinho" id="resumo-carrinho" hidden>
+      <form class="formulario-cupom" id="form-cupom">
+        <label for="codigo-cupom">Cupom de desconto</label>
+        <div class="linha-campos-cupom"><input id="codigo-cupom" name="cupom" type="text" placeholder="Digite seu cupom" autocomplete="off"><button class="button button-secondary" type="submit">Aplicar</button></div>
+        <p class="retorno-cupom" id="feedback-cupom" role="status" aria-live="polite">Use MAKER10 ou FRETEGRATIS.</p>
+      </form>
+      <div class="totais-carrinho" id="totais-carrinho"></div>
+      <p class="aviso-pagamento-demonstrativo">Demonstração acadêmica: nenhum pagamento real será realizado.</p>
+      <button class="button button-primary botao-finalizar-compra" id="btn-finalizar" type="button">Continuar para finalizar <span aria-hidden="true">→</span></button>
+      <button class="botao-esvaziar-carrinho" id="limpar-carrinho" type="button">Esvaziar carrinho</button>
+    </div>
+  </aside>
+
+  <!-- Janela de detalhes preenchida com as informações do produto selecionado. -->
+  <!-- A ficha é preenchida quando a pessoa seleciona a imagem ou o botão de detalhes. -->
+  <dialog class="dialogo-detalhes-produto" id="modal-detalhes-produto" aria-labelledby="detalhes-nome">
+    <div class="dialog-header">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> Conheça melhor</p><h2 id="detalhes-nome">Detalhes do produto</h2></div>
+      <button class="icon-button" id="fechar-detalhes-produto" type="button" aria-label="Fechar detalhes do produto"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="layout-detalhes-produto">
+      <div class="moldura-imagem-detalhes-produto"><img id="detalhes-imagem" src="assets/images/arduino.png" alt="" width="640" height="480"></div>
+      <div class="texto-detalhes-produto">
+        <p class="categoria-detalhes-produto" id="detalhes-categoria"></p>
+        <div class="avaliacao-detalhes-produto" id="detalhes-avaliacao"></div>
+        <p class="preco-detalhes-produto"><span id="detalhes-preco-anterior" hidden></span><strong id="detalhes-preco"></strong></p>
+        <p class="descricao-detalhes-produto" id="detalhes-descricao"></p>
+        <section aria-labelledby="titulo-especificacoes"><h3 id="titulo-especificacoes">Detalhes e especificações</h3><ul id="detalhes-especificacoes"></ul></section>
+        <section aria-labelledby="titulo-indicado"><h3 id="titulo-indicado">Para quem é indicado?</h3><p id="detalhes-indicado-para"></p></section>
+      </div>
+    </div>
+    <div class="dialog-actions acoes-detalhes-produto">
+      <button class="button button-secondary" id="fechar-detalhes-secundario" type="button">Continuar explorando</button>
+      <button class="button button-primary" id="btn-adicionar-detalhe" type="button">Adicionar ao carrinho <span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
+
+  <!-- Checkout demonstrativo; nenhuma forma de pagamento gera cobrança real. -->
+  <!-- Checkout de demonstração: os dados servem apenas para validar o fluxo no navegador. -->
+  <dialog class="dialogo-finalizacao" id="modal-checkout" aria-labelledby="titulo-checkout">
+    <div class="dialog-header"><div><p class="eyebrow"><span class="eyebrow-line"></span> Só mais um passo</p><h2 id="titulo-checkout">Finalizar pedido</h2></div><button class="icon-button" id="fechar-checkout" type="button" aria-label="Fechar finalização"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="resumo-finalizacao" id="resumo-checkout"></div>
+    <form id="form-checkout" class="formulario-finalizacao">
+      <div class="field-group"><label for="nome-cliente">Nome completo</label><input id="nome-cliente" name="nome" type="text" autocomplete="name" minlength="2" required placeholder="Como podemos chamar você?"></div>
+      <div class="field-group"><label for="email-cliente">E-mail</label><input id="email-cliente" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com"></div>
+      <div class="field-group"><label for="cep-cliente">CEP <span>(opcional)</span></label><input id="cep-cliente" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000"></div>
+
+      <fieldset class="opcoes-pagamento" aria-describedby="aviso-pagamento">
+        <legend>Forma de pagamento</legend>
+        <label class="opcao-pagamento">
+          <input type="radio" name="forma-pagamento" value="pix" checked required>
+          <span class="opcao-pagamento-icon" aria-hidden="true">▦</span>
+          <span class="opcao-pagamento-text"><strong>Pix</strong><small>QR Code e código de demonstração</small></span>
+          <span class="opcao-pagamento-tag">Instantâneo</span>
+        </label>
+        <label class="opcao-pagamento">
+          <input type="radio" name="forma-pagamento" value="credito" required>
+          <span class="opcao-pagamento-icon" aria-hidden="true">▤</span>
+          <span class="opcao-pagamento-text"><strong>Cartão de crédito</strong><small>Parcelamento demonstrativo</small></span>
+        </label>
+        <label class="opcao-pagamento">
+          <input type="radio" name="forma-pagamento" value="debito" required>
+          <span class="opcao-pagamento-icon" aria-hidden="true">▣</span>
+          <span class="opcao-pagamento-text"><strong>Cartão de débito</strong><small>Sem inserção de dados bancários</small></span>
+        </label>
+        <label class="opcao-pagamento">
+          <input type="radio" name="forma-pagamento" value="boleto" required>
+          <span class="opcao-pagamento-icon" aria-hidden="true">▥</span>
+          <span class="opcao-pagamento-text"><strong>Boleto bancário</strong><small>Emissão real não disponível nesta demonstração</small></span>
+        </label>
+      </fieldset>
+      <div class="detalhes-pagamento" id="detalhes-pagamento" aria-live="polite" aria-atomic="true"></div>
+      <p class="aviso-finalizacao" id="aviso-pagamento">Projeto acadêmico: os métodos são demonstrativos. Nenhuma transação é processada e os dados não são enviados a servidores.</p>
+      <div class="dialog-actions"><button class="button button-secondary" id="cancelar-checkout" type="button">Voltar ao carrinho</button><button class="button button-primary" type="submit">Confirmar pedido <span aria-hidden="true">→</span></button></div>
+    </form>
+  </dialog>
+
+  <!-- Confirmação exibida depois que o pedido fica registrado no navegador. -->
+  <!-- Esta janela confirma o registro local do pedido, sem afirmar que houve pagamento. -->
+  <dialog class="dialogo-pedido-registrado" id="modal-sucesso" aria-labelledby="titulo-sucesso">
+    <div class="success-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg></div>
+    <p class="eyebrow">Pedido registrado</p><h2 id="titulo-sucesso">Projeto a caminho!</h2><p id="mensagem-sucesso">Seu pedido de demonstração foi registrado neste navegador.</p><p class="order-number" id="numero-pedido"></p><button class="button button-primary" id="fechar-sucesso" type="button">Continuar explorando</button>
+  </dialog>
+
+  <div class="regiao-mensagens-rapidas" id="regiao-mensagem-rapida" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

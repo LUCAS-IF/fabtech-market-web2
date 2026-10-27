@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com a FabTech Market, loja demonstrativa de produtos e materiais do universo maker.">
+  <meta name="theme-color" content="#5b4be7">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>Contato | FabTech Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/contato.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+  <div class="announcement-bar">
+    <p><span class="announcement-dot" aria-hidden="true"></span> Um espaço demonstrativo para ideias maker</p>
+    <a href="index.html#catalogo">Explorar produtos <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-main container">
+      <a class="brand" href="index.html#inicio" aria-label="FabTech Market - página inicial">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 9.5 20 3l12 6.5v14L20 30 8 23.5z"/><path d="M8 9.5 20 16l12-6.5M20 16v14M13.5 6.5 25.5 13v8.5L20 24.5l-5.5-3V13z"/></svg></span>
+        <span class="brand-wordmark"><span>FABTECH</span><small>MARKET</small></span>
+      </a>
+      <!-- A navegação mantém os mesmos atalhos da loja e indica a página atual. -->
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#newsletter">Novidades</a>
+        <a href="contato.html" aria-current="page">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <!-- O tema escolhido aqui também é usado na página principal da loja. -->
+        <button class="icon-button theme-toggle" id="btn-tema-contato" type="button" aria-label="Ativar tema escuro" aria-pressed="false" title="Alternar tema">
+          <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.6 8.6 0 1 0 20.4 15.4Z"/></svg>
+        </button>
+        <a class="button button-primary" href="index.html#catalogo">Ver a loja <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal" class="pagina-contato">
+    <section class="cabecalho-contato container" aria-labelledby="titulo-contato">
+      <p class="eyebrow"><span class="eyebrow-line"></span> Estamos por aqui</p>
+      <h1 id="titulo-contato">Vamos conversar sobre <span>seu próximo projeto.</span></h1>
+      <p>Use o formulário para experimentar o fluxo de contato da FabTech Market. Esta página faz parte de um projeto acadêmico e não envia mensagens para um servidor.</p>
+    </section>
+
+    <!-- Os cartões mostram canais de exemplo; o formulário não envia mensagens. -->
+    <section class="conteudo-contato container" aria-label="Canais de contato e formulário">
+      <div class="coluna-informacoes-contato">
+        <!-- Cada cartão apresenta um canal de contato; os dados de exemplo estão identificados. -->
+        <article class="cartao-informacao-contato">
+          <span class="icone-informacao-contato" aria-hidden="true">✉</span>
+          <h2>E-mail</h2>
+          <p>Canal demonstrativo</p>
+          <a href="https://www.gmail.com" target="_blank"><span class="valor-informacao-contato">contatofabtechmarket@gmail.com</span></a>
+          <small>Endereço de exemplo, não monitorado.</small>
+        </article>
+        <article class="cartao-informacao-contato">
+          <span class="icone-informacao-contato" aria-hidden="true">◎</span>
+          <h2>Instagram</h2>
+          <p>Redes sociais</p>
+          <a class="valor-informacao-contato" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">@FabTechMarket ↗</a>
+          <small>Perfil demonstrativo. Troque o nome e o link pelo Instagram oficial antes de publicar.</small>
+        </article>
+        <article class="cartao-informacao-contato">
+          <span class="icone-informacao-contato" aria-hidden="true">☎</span>
+          <h2>Telefone</h2>
+          <p>Contato telefônico</p>
+          <span class="valor-informacao-contato">+55 (11) 90234-2601</span>
+          <small>Número de exemplo, não funcional. Substitua pelo telefone correto antes de publicar.</small>
+        </article>
+        <article class="cartao-informacao-contato">
+          <span class="icone-informacao-contato" aria-hidden="true">◷</span>
+          <h2>Atendimento</h2>
+          <p>Informação do projeto</p>
+          <span class="valor-informacao-contato">Projeto acadêmico</span>
+          <small>Não há equipe de atendimento real conectada.</small>
+        </article>
+        <div class="aviso-contato">
+          <strong>Sobre seus dados</strong>
+          <p>O formulário apenas valida os campos no navegador. Nome, e-mail e mensagem não são enviados nem armazenados.</p>
+        </div>
+      </div>
+
+      <!-- O JavaScript verifica os campos e mostra o resultado na própria página. -->
+      <form class="formulario-contato" id="form-contato" novalidate>
+        <div class="cabecalho-formulario-contato">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Fale conosco</p>
+          <h2>Como podemos ajudar?</h2>
+          <p>Preencha os campos abaixo para testar o formulário.</p>
+        </div>
+        <!-- Campos separados para que rótulos, mensagens de erro e valores fiquem claros. -->
+        <div class="field-group">
+          <label for="nome-contato">Nome completo</label>
+          <input id="nome-contato" name="nome" type="text" autocomplete="name" minlength="2" maxlength="100" aria-describedby="erro-nome-contato" required placeholder="Digite seu nome">
+          <small class="field-error" id="erro-nome-contato"></small>
+        </div>
+        <div class="field-group">
+          <label for="email-contato">E-mail</label>
+          <input id="email-contato" name="email" type="email" autocomplete="email" maxlength="150" aria-describedby="erro-email-contato" required placeholder="voce@exemplo.com">
+          <small class="field-error" id="erro-email-contato"></small>
+        </div>
+        <div class="field-group">
+          <label for="assunto-contato">Assunto</label>
+          <select id="assunto-contato" name="assunto" aria-describedby="erro-assunto-contato" required>
+            <option value="" selected disabled>Selecione um assunto</option>
+            <option value="produto">Dúvida sobre produto</option>
+            <option value="pedido">Dúvida sobre pedido</option>
+            <option value="parceria">Parceria ou oficina</option>
+            <option value="outro">Outro assunto</option>
+          </select>
+          <small class="field-error" id="erro-assunto-contato"></small>
+        </div>
+        <div class="field-group">
+          <label for="mensagem-contato">Mensagem</label>
+          <textarea id="mensagem-contato" name="mensagem" rows="5" minlength="10" maxlength="1200" aria-describedby="erro-mensagem-contato" required placeholder="Conte um pouco sobre o que precisa..."></textarea>
+          <div class="field-helper-row"><small>Escreva pelo menos 10 caracteres.</small><small id="contador-mensagem">0/1200</small></div>
+          <small class="field-error" id="erro-mensagem-contato"></small>
+        </div>
+        <!-- O botão valida os campos localmente; ele não envia a mensagem a um servidor. -->
+        <button class="button button-primary botao-enviar-contato" type="submit">Validar mensagem <span aria-hidden="true">→</span></button>
+        <p class="retorno-contato" id="feedback-contato" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Rodapé mantém a navegação disponível também nesta página. -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-block">
+        <a class="brand brand-footer" href="index.html#inicio" aria-label="FabTech Market - voltar ao início">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 9.5 20 3l12 6.5v14L20 30 8 23.5z"/><path d="M8 9.5 20 16l12-6.5M20 16v14M13.5 6.5 25.5 13v8.5L20 24.5l-5.5-3V13z"/></svg></span>
+          <span class="brand-wordmark"><span>FABTECH</span><small>MARKET</small></span>
+        </a>
+        <p>Produtos e ideias para quem gosta de criar, experimentar e fazer acontecer.</p>
+      </div>
+      <div class="footer-column"><h2>Loja</h2><a href="index.html#catalogo">Todos os produtos</a><a href="index.html#catalogo">Explorar catálogo</a></div>
+      <div class="footer-column"><h2>Ajuda</h2><a href="contato.html" aria-current="page">Contato</a><a href="index.html#como-funciona">Como funciona</a></div>
+    </div>
+    <div class="container footer-bottom"><p>© <span id="ano-contato"></span> FabTech Market. Projeto acadêmico demonstrativo.</p><p>Feito para transformar ideias em projetos.</p></div>
+  </footer>
+</body>
+</html>
